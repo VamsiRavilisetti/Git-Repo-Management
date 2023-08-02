@@ -1,0 +1,125 @@
+.border {
+    border: solid 1px #000000 !important;
+}
+
+.header {
+    background: #000000;
+
+    h2 {
+        color: #ffffff;
+        border-bottom: 0rem;
+        margin: 0px;
+    }
+}
+
+.nameSection {
+    border-right: solid 1px #000000;
+    border-bottom: solid 1px #000000;
+    position: relative;
+    height: 600px;
+    overflow-y: scroll;
+}
+
+.repoName {
+    border-bottom: solid 1px #000000;
+    padding: 0.5rem 0rem;
+
+    h5 {
+        margin-bottom: 0px;
+    }
+
+    p {
+        margin-bottom: 0px;
+    }
+}
+
+.active {
+    background-color: rgb(230 230 230);
+}
+
+.delete {
+    h5 {
+        text-align: right;
+        padding: 1rem;
+        margin: 0px;
+        cursor: pointer;
+    }
+}
+
+.repoDetailsBlock {
+    border: solid 1px #000000;
+    height: 500px;
+    overflow-y: scroll;
+    margin: 0rem 1rem;
+
+    .detailHeader {
+        margin: 0px;
+        padding: .5rem;
+        border-bottom: solid 1px #000000;
+
+        p {
+            border-right: #000000 solid 1px;
+            padding: 0.5rem 1rem;
+            display: inline;
+        }
+    }
+
+    .repoDescription {
+        h5 {
+            padding: 10px;
+            margin: 0px;
+        }
+
+        p {
+            border-bottom: solid 1px #000000;
+            padding: 1rem;
+        }
+    }
+}
+
+.addBtn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    background-color: #ffe6cc;
+    border: solid #e1af36 1px;
+    position: sticky;
+    text-align: center;
+    padding: 10px;
+    bottom: 1rem;
+    left: 1rem;
+
+    button {
+        border: none;
+        background: transparent;
+    }
+}
+
+.addToRep {
+    border: none;
+    background: #000000;
+    color: #ffffff;
+    margin: 1rem;
+    padding: .5rem;
+    width: 8rem;
+}
+
+.modal-content {
+    border: solid 1px black;
+    border-radius: 0px;
+
+    .form-control {
+        border: solid 1px #000000;
+        border-radius: 0px;
+    }
+
+    form {
+        padding: 1rem;
+    }
+}
+
+.userAvatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+}

@@ -1,0 +1,14 @@
+<!-- commit screen container -->
+<div class="container commitScreenContainer">
+    <!-- commits Header -->
+    <h2 class="p-2">COMMITS: BRANCH NAME</h2>
+    <!-- commits section -->
+    <div class="commitsSection">
+        <!-- author and message block -->
+        <div class="commit" *ngFor="let commit of commitData">
+            <p class="date">{{commit.commit.author.date}}</p>
+            <p>{{commit.commit.message}}</p>
+            <p><img class="authorLogo" [src]="commit.author.avatar_url" alt="author image"> {{commit.author.login}}</p>
+        </div>
+    </div>
+</div>

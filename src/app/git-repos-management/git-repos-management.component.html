@@ -1,0 +1,60 @@
+<div class="container g-0 border">
+    <div class="header">
+        <!-- heading section -->
+        <h2 class="text-center p-2">GITHUB BROWSER</h2>
+    </div>
+    <div class="row g-0">
+        <!-- repositories list section -->
+        <div class="col-md-5 mb-2 nameSection">
+            <div class="repoName" [ngClass]="{'active': repos.name == selectedRepo}" (click)="openBranch(repos.name,i)"
+                *ngFor="let repos of repositories let i = index">
+                <h5>{{repos.name}}</h5>
+                <p>{{repos.description}}</p>
+            </div>
+            <!-- add repositories button -->
+            <div class="addBtn"><button type="button" data-bs-toggle="modal" data-bs-target="#myModal">+</button></div>
+            <!-- modal popup after clicking add button -->
+            <div class="modal" id="myModal">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <p class="text-center p-2">ADD NEW REPOSITORY</p>
+                        <form [formGroup]="repoForm" requir (ngSubmit)="onSubmit()">
+                            <label for="exampleInputEmail1">Owner / Organization</label>
+                            <input type="email" class="form-control" formControlName="owner">
+                            <label for="exampleInputEmail1">Repository Name</label>
+                            <input type="email" class="form-control" formControlName="name">
+                            <div class="text-center">
+                                <button [disabled]="!repoForm.valid" type="submit" class="addToRep"
+                                    data-bs-dismiss="modal">ADD</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- selected repository details section -->
+        <div class="col-md-7  mb-2  repoDetails">
+            <!-- delete repo button -->
+            <div class="delete">
+                <h5 (click)="deleteRepo()">DELETE</h5>
+            </div>
+            <!-- repository details block -->
+            <div class="repoDetailsBlock">
+                <div class="detailHeader">
+                    <p (click)="selectBranch()">BRANCHES</p>
+                    <p (click)="loadIssues()">ISSUES</p>
+                </div>
+                <!-- branch details section -->
+                <div class="repoDescription" *ngFor="let branch of branches" [routerLink]="['/commit','timmywheels',selectedRepo]">
+                    <p *ngIf="branchSelected">{{branch.name}}</p>
+                </div>
+                <!-- issue details section -->
+                <div class="repoDescription" *ngFor="let issue of issues" >
+                    <h5 *ngIf="!branchSelected">{{issue.title}}</h5>
+                    <p *ngIf="!branchSelected"> <img class="userAvatar" src="{{issue.user.avatar_url}}"
+                            alt="avatar image"> {{issue.user.login}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
