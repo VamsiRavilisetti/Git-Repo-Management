@@ -14,10 +14,6 @@ export class GitReposManagementComponent implements OnInit {
   repositories: any
   ngOnInit(): void {
     // api call to get all available repos for user 
-    // this.http.get<any>('https://api.github.com/users/VamsiRavilisetti/repos').subscribe(data => {
-    //   this.repositories = data;
-    //   console.log(this.repositories)
-    // })
     this.http.get<any>('https://api.github.com/users/octocat/repos').subscribe(data => {
       this.repositories = data;
       console.log(this.repositories)
@@ -39,9 +35,9 @@ export class GitReposManagementComponent implements OnInit {
   branches: any;
   selectedRepo: any;
   selectedIndex: any;
-  selectedOwner:any;
+  selectedOwner: any;
   // after selecting a repo this function tirggers and calls api for loading all the available branches for thet branch
-  openBranch(owner:any,repoName: any, index: any) {
+  openBranch(owner: any, repoName: any, index: any) {
     this.http.get<any>(`https://api.github.com/repos/${owner}/${repoName}/branches`).subscribe(data => {
       this.branches = data;
       console.log(this.branches);
@@ -70,7 +66,6 @@ export class GitReposManagementComponent implements OnInit {
     this.branchSelected = false;
     this.issues = []
     this.http.get<any>(`https://api.github.com/repos/${this.selectedOwner}/${this.selectedRepo}/issues`).subscribe(data => {
-    // this.http.get<any>(`https://api.github.com/repos/octocat/hello-world/issues`).subscribe((data: any) => {
       if (data.length == 0) {
         let issueNotFound = {
           name: "no issues found"

@@ -13,14 +13,14 @@ export class CommitsScreenComponent implements OnInit {
 
   repo: any;
   branch: any;
-  commitData:any
+  commitData: any
   ngOnInit(): void {
     // for ggetting route paraments with repository name branch name for commits calling api
     this.repo = this.route.snapshot.params['repo'];
     this.branch = this.route.snapshot.params['branch'];
     // commits api call here with repo name and branch name from selected branch
     this.http.get<any>(`https://api.github.com/repos/${this.repo}/${this.branch}/commits`).subscribe(data => {
-      this.commitData=data
+      this.commitData = data
     })
   }
 }

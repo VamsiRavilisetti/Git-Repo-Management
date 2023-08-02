@@ -6,8 +6,8 @@
     <div class="row g-0">
         <!-- repositories list section -->
         <div class="col-md-5 mb-2 nameSection">
-            <div class="repoName" [ngClass]="{'active': repos.name == selectedRepo}" (click)="openBranch(repos.owner.login,repos.name,i)"
-                *ngFor="let repos of repositories let i = index">
+            <div class="repoName" [ngClass]="{'active': repos.name == selectedRepo}"
+                (click)="openBranch(repos.owner.login,repos.name,i)" *ngFor="let repos of repositories let i = index">
                 <h5>{{repos.name}}</h5>
                 <p>{{repos.description}}</p>
             </div>
@@ -45,11 +45,12 @@
                     <p (click)="loadIssues()">ISSUES</p>
                 </div>
                 <!-- branch details section -->
-                <div class="repoDescription" *ngFor="let branch of branches" [routerLink]="['/commit',selectedOwner,selectedRepo]">
+                <div class="repoDescription" *ngFor="let branch of branches"
+                    [routerLink]="['/commit',selectedOwner,selectedRepo]">
                     <p *ngIf="branchSelected">{{branch.name}}</p>
                 </div>
                 <!-- issue details section -->
-                <div class="repoDescription" *ngFor="let issue of issues" >
+                <div class="repoDescription" *ngFor="let issue of issues">
                     <h5 *ngIf="!branchSelected">{{issue.title}}</h5>
                     <p *ngIf="!branchSelected"> <img class="userAvatar" src="{{issue.user.avatar_url}}"
                             alt="avatar image"> {{issue.user.login}}</p>
