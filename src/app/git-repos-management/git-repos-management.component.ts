@@ -32,21 +32,6 @@ export class GitReposManagementComponent implements OnInit {
   // this function triggers when user clicks on add button after filing required data and pushes the data to the array of repositories
   onSubmit() {
     this.repositories.push(this.repoForm.value)
-    this.http.post<any>('https://api.github.com/orgs/vamsi/repos', {
-      org: 'ORG',
-      name: 'Hello-World',
-      description: 'This is your first repository',
-      homepage: 'https://github.com',
-      'private': false,
-      has_issues: true,
-      has_projects: true,
-      has_wiki: true,
-      headers: {
-        'X-GitHub-Api-Version': '2022-11-28'
-      }
-    }).subscribe(data => {
-      let postId = data.id;
-    })
   }
   branches: any;
   selectedRepo: any;
