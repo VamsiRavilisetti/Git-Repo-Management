@@ -52,6 +52,7 @@ export class GitReposManagementComponent implements OnInit {
   deleteRepo() {
     this.repositories.splice(this.selectedIndex, 1);
     this.branches = null;
+    this.issues = null;
   }
   issues: any = [];
   branchSelected: boolean = true;
