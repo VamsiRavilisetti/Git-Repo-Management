@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { GitApiService } from './../git-api.service';
+
 
 @Component({
   selector: 'app-commits-screen',
@@ -9,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CommitsScreenComponent implements OnInit {
 
-  constructor(private http: HttpClient, private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private GitApiService: GitApiService) { }
 
   repo: any;
   branch: any;
@@ -19,8 +20,12 @@ export class CommitsScreenComponent implements OnInit {
     this.repo = this.route.snapshot.params['repo'];
     this.branch = this.route.snapshot.params['branch'];
     // commits api call here with repo name and branch name from selected branch
-    this.http.get<any>(`https://api.github.com/repos/${this.repo}/${this.branch}/commits`).subscribe(data => {
-      this.commitData = data
-    })
+    let url = `https://api.github.com/repos/${this.repo}/${this.branch}/commits`
+    this.GitApiService.getData(url).subscribe(
+      (data) => {
+        this.commitData = data
+      },
+      (err) => { console.log("Error!: ", err) }
+    )
   }
 }
